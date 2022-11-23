@@ -16,8 +16,19 @@ read input
 
 python3 input.py $input
 filename=`find .. -name "*$input*"`
-result=`find . -name "input*txt"`
+inputcount=`ls | grep input | grep txt | wc -l`
+find . -name "input*txt"  >> temp.txt
 
-python3 $filename $result[2]
+result=(`cat temp.txt`)
 
+for (( i=0; i<${#result[@]}; i++ )); do
+	python3 ${filename} ${result[i]}
+	echo
+done
+
+unset input
+unset filename
+unset inputcount
+unset result
 rm -rf input*txt
+rm -rf temp.txt
