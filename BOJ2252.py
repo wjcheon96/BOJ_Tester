@@ -2,6 +2,7 @@ import sys
 from collections import deque
 
 f = open(sys.argv[1], "r")
+#f = open("./input1.txt", "r")
 
 N, M = map(int, f.readline().split())
 
